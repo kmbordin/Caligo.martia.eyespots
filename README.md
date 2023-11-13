@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10116939.svg)](https://doi.org/10.5281/zenodo.10116939)
+
 This repository contains the data and codes from the following manuscript: 
 
 THE LARGE AND CENTRAL Caligo martia HIND WING EYESPOT MAY REDUCE FATAL ATTACKS BY BIRDS: A CASE STUDY SUPPORTS THE DEFLECTION HYPOTHESIS IN NATURE
