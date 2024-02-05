@@ -1,4 +1,4 @@
-#THE LARGE AND CENTRAL Caligo martia HIND WING EYESPOT MAY REDUCE FATAL ATTACKS BY BIRDS: A CASE STUDY SUPPORTS THE DEFLECTION HYPOTHESIS IN NATURE, by Iserhard et al. (2023)
+#THE LARGE AND CENTRAL Caligo martia EYESPOT MAY REDUCE FATAL ATTACKS BY BIRDS: A CASE STUDY SUPPORTS THE DEFLECTION HYPOTHESIS IN NATURE, by Iserhard et al. (2023)
 
 # loading packages ----
 library(lme4) # glmm
@@ -41,7 +41,7 @@ my_theme <- theme_light()+
 
 plot_m1 <- ggplot(predation, aes(x = model, y = pred, fill=model,alpha = 0.95)) +
   ylab("Predation probability (%)") + 
-  xlab("Models")+ 
+  xlab("Facsimiles")+ 
   my_theme+
   #geom_jitter(alpha=0.1)+
   scale_fill_manual(values=c("#FF9933","#FFFF00", "#330000","gray90"))+
@@ -51,6 +51,6 @@ plot_m1 <- ggplot(predation, aes(x = model, y = pred, fill=model,alpha = 0.95)) 
 plot_m1
 
 
-# tiff("graphglmm.tif", width = 4, height = 3.2, units = 'in', res = 300)
+# png("graphglmm.png", width = 4, height = 3.2, units = 'in', res = 300)
 # plot_m1
 # dev.off()

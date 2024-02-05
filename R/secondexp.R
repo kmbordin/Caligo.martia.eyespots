@@ -1,4 +1,4 @@
-#THE LARGE AND CENTRAL Caligo martia HIND WING EYESPOT MAY REDUCE FATAL ATTACKS BY BIRDS: A CASE STUDY SUPPORTS THE DEFLECTION HYPOTHESIS IN NATURE, by Iserhard et al. (2023)
+#THE LARGE AND CENTRAL Caligo martia EYESPOT MAY REDUCE FATAL ATTACKS BY BIRDS: A CASE STUDY SUPPORTS THE DEFLECTION HYPOTHESIS IN NATURE, by Iserhard et al. (2023)
 
 # loading packages ----
 library(ggplot2) # figures
@@ -40,52 +40,55 @@ my_theme <- theme_light()+
 # model NC
 m1.p <- data.frame(fact= new.df$factor, predicted=(predict(m1,type="response"))*100)
 v1 <- ggplot(m1.p, aes(x=fact, y=predicted))+
-  geom_jitter(colour="gray80", size=0.2)+
-  stat_summary(size=0.2)+
+  geom_jitter(colour="gray80", size=0.5)+
+  stat_summary(size=0.3)+
   my_theme+
-  xlab("Model NC")+
-  ylab("")+
+  labs(x="NC", y="", tag = "iv)")+
   annotate("text", x = 1, y = 35, label = "a",
-           colour = "black", size=3)+
+           colour = "black", size=5)+
   annotate("text", x = 2, y = 35, label = "b",
-           colour = "black", size=3)
+           colour = "black", size=5)
 
 # model CM
 m2.p <- data.frame(fact= new.df$factor, predicted=(predict(m2,type="response"))*100)
 v2 <- ggplot(m2.p, aes(x=fact, y=predicted))+
-  geom_jitter(colour="gray80", size=0.2)+
-  stat_summary(size=0.2)+
+  geom_jitter(colour="gray80", size=0.5)+
+  stat_summary(size=0.3)+
   my_theme+
-  xlab("Model CM")+
-  ylab("")
-
+  labs(x="CM", y="", tag = "iii)")+
+  ylim(0,100)+
+  annotate("text", x = 1, y = 35, label = "a",
+           colour = "black", size=5)+
+  annotate("text", x = 2, y = 35, label = "a",
+           colour = "black", size=5)
 # model WE
 m3.p <- data.frame(fact= new.df$factor, predicted=(predict(m3,type="response"))*100)
 v3 <- ggplot(m3.p, aes(x=fact, y=predicted))+
-  geom_jitter(colour="gray80", size=0.2)+
-  stat_summary(size=0.2)+
+  geom_jitter(colour="gray80", size=0.5)+
+  stat_summary(size=0.3)+
   my_theme+
-  xlab("Model WE")+
-  ylab("") +
+ labs(x="WE", y="", tag = "i)")+
   annotate("text", x = 1, y = 35, label = "a",
-           colour = "black", size=3)+
+           colour = "black", size=5)+
   annotate("text", x = 2, y = 35, label = "b",
-           colour = "black", size=3)
+           colour = "black", size=5)
 
 # model UV
 m4.p <- data.frame(fact= new.df$factor, predicted=(predict(m4,type="response"))*100)
 v4 <- ggplot(m4.p, aes(x=fact, y=predicted))+
-  geom_jitter(colour="gray80", size=0.2)+
-  stat_summary(size=0.2)+
+  geom_jitter(colour="gray80", size=0.5)+
+  stat_summary(size=0.3)+
   my_theme+
-  xlab("Model UV")+
-  ylab("")
-
+  labs(x="UV", y="", tag = "ii)")+
+  annotate("text", x = 1, y = 35, label = "a",
+           colour = "black", size=5)+
+  annotate("text", x = 2, y = 35, label = "a",
+           colour = "black", size=5)
 yleft <- richtext_grob("Predation probability (%)", rot=+90)
 # 
-# tiff("plots_2nd_exp.tif", width = 5, height = 4, units = 'in', res = 300)
-# grid.arrange(v3,v4,v2,v1, left=yleft)
-# dev.off()
+png("plots_2nd_exp.png", width = 5, height = 4, units = 'in', res = 300)
+grid.arrange(v3,v4,v2,v1, left=yleft)
+dev.off()
 
 # trends in predation probability ----------
 predation <- read.table(here::here("processed data", "experiment_2.txt"), h=T)
@@ -103,7 +106,7 @@ predation$model <- factor(predation$model, levels = c("WE","UV","CM","NC"))
 
 
 p1 <- ggplot(predation, aes(x = model, y = count, fill=body_part, color=body_part, shape = body_part)) +
-  ylab("Number of predations in wings      and body   ") + xlab("Models")+
+  ylab("Number of attacks in wings      and body   ") + xlab("Facsimiles")+
   geom_point(size=5) + my_theme+
   scale_shape_manual(values = c(23, 21))+
   scale_fill_manual(values=c("#56B4E9","#E69F00"))+
@@ -113,6 +116,6 @@ p1 <- ggplot(predation, aes(x = model, y = count, fill=body_part, color=body_par
   theme(legend.title = element_blank())
  p1 
  
- # tiff("plots_2nd_exp2.tif", width = 5, height = 4, units = 'in', res = 300)
+ # png("plots_2nd_exp2.png", width = 5, height = 4, units = 'in', res = 300)
  # p1
  # dev.off()
